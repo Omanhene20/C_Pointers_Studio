@@ -1,0 +1,113 @@
+# C Pointers Studio - Answers
+
+## 1. List the names of the people who worked together on this studio:
+[Kwabena Adjei Omanhene-Gyimah]
+
+## 2. Minimal C Program:
+```c
+#include <stdio.h>
+
+int main() {
+    return 0;
+}
+
+
+#include <stdio.h>
+
+int main() {
+    char *messagePtr = "HELLOWORLD!";
+    printf("%s\n", messagePtr);
+    return 0;
+}
+
+
+#include <stdio.h>
+
+int main() {
+    char *messagePtr = "HELLOWORLD!";
+    for (int i = 0; messagePtr[i] != '\0'; i++) {
+        printf("%c\n", messagePtr[i]);
+    }
+    return 0;
+}
+
+
+//Q5 The dereference of messagePtr (*messagePtr) points to the first character: H
+
+//Q6
+#include <stdio.h>
+
+int main() {
+    char *messagePtr = "HELLOWORLD!";
+    for (int i = 0; *(messagePtr + i) != '\0'; i++) {
+        printf("%c\n", *(messagePtr + i));
+    }
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    char *messagePtr = "HELLOWORLD!";
+    char *ptr = messagePtr;
+
+    while (*ptr != '\0') {
+        printf("%c\n", *ptr);
+        ptr++;
+    }
+
+    return 0;
+}
+
+#include <stdio.h>
+
+void printReverse(char *string) {
+    char *ptr = string;
+
+    // Find the end of the string
+    while (*ptr != '\0') {
+        ptr++;
+    }
+
+    // Move back before null terminator
+    ptr--;
+
+    // Print in reverse
+    while (ptr >= string) {
+        printf("%c\n", *ptr);
+        ptr--;
+    }
+}
+
+int main() {
+    char *messagePtr = "HELLOWORLD!";
+    printReverse(messagePtr);
+    return 0;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+char* reverseString(char* input) {
+    int length = 0;
+    while (input[length] != '\0') {
+        length++;
+    }
+
+    char* output = (char*)malloc(length + 1);
+    for (int i = 0; i < length; i++) {
+        output[i] = input[length - i - 1];
+    }
+    output[length] = '\0';
+
+    return output;
+}
+
+int main() {
+    char *messagePtr = "HELLOWORLD!";
+    char *reversedMessage = reverseString(messagePtr);
+    printf("Reversed string: %s\n", reversedMessage);
+
+    free(reversedMessage);
+    return 0;
+}
